@@ -49,19 +49,21 @@ public void testClass() {
     assertEquals(false, Modifier.isFinal(cls.getModifiers()));
 
     assertEquals(1, cls.getDeclaredConstructors().length);
-    assertEquals(true, Modifier.isProtected(cls.getDeclaredConstructors()[0].getModifiers()));
+    assertEquals(true, Modifier.isProtected(
+            cls.getDeclaredConstructors()[0].getModifiers()));
 
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
-                    <p class="fragment roll-in">Boa documentação?</p>
+                    <p class="fragment roll-in highlight-red">Meh...</p>
+                    <p class="fragment roll-in highlight-blue">Sim, e esse é um bom exemplo!</p>
                     <aside class="notes">
                         O código de teste documenta algumas propriedades que a classe DateTimeUtils deve seguir. Mas será que ela documenta bem?
                     </aside>
 				</section>
 
 				<section>
-					<h2>Se você acha que sim...</h2>
+					<h2>Se você concorda...</h2>
 
                     <img alt="Tio Sam quer você" src="BAIXAR" class="fragment roll-in">
 				</section>
@@ -75,7 +77,7 @@ public void testClass() {
                     <section>
                         <h2>About</h2>
                         <p class="fragment shrink">Mestre em Ciência da Computação <img src="BAIXAR" alt="Isso sim é mestre!"></p>
-                        <p class="fragment roll-in">Desenvolvedor e instrutor na Caelum</p>
+                        <p class="fragment roll-in">Desenvolvedor e instrutor na Caelum <img src="BAIXAR" alt="Logotipo da Caelum"></p>
                     </section>
                     <section>
                         <h2>About Caelum</h2>
@@ -87,14 +89,16 @@ public void testClass() {
                 </section>
 
                 <section>
-                    <h2>Pra quê testes?</h2>
-                    <img src="BAIXAR" alt="Nah, nem precisa!">
-                </section>
+                    <section>
+                        <h2>Pra quê testes?</h2>
+                        <img src="BAIXAR" alt="Nah, nem precisa!">
+                    </section>
 
-                <section>
-                    <h2>Por vários motivos!</h2>
-                    <img src="BAIXAR" alt="Tudo verde!">
-                    <img src="BAIXAR" alt="Refatoração" class="fragment roll-in">
+                    <section>
+                        <h2>Por vários motivos!</h2>
+                        <img src="BAIXAR" alt="Tudo verde!">
+                        <img src="BAIXAR" alt="Refatoração" class="fragment roll-in">
+                    </section>
                 </section>
 
                 <section>
@@ -114,7 +118,8 @@ public void testClass() {
     assertEquals(false, Modifier.isFinal(cls.getModifiers()));
 
     assertEquals(1, cls.getDeclaredConstructors().length);
-    assertEquals(true, Modifier.isProtected(cls.getDeclaredConstructors()[0].getModifiers()));
+    assertEquals(true, Modifier.isProtected(
+            cls.getDeclaredConstructors()[0].getModifiers()));
 
     DateTimeUtils utils = new DateTimeUtils() {};
 }
@@ -128,18 +133,60 @@ public void testClass() {
 
                 <section>
                     <h2>Sobre o que é isso?</h2>
-                    <p class="custom-curtir">Vossa mensagem apeteceu-me de tal forma que demonstrarei publicamente meu regozijo apertando o botão de meu dispositivo de apontamento sobre esta região do documento.</p>
+                    <p class="custom-versus">Vossa mensagem apeteceu-me de tal forma que demonstrarei publicamente meu regozijo apertando o botão de meu dispositivo de apontamento sobre esta região do documento.</p>
                     <div class="fragment roll-in">
-                        <em class="custom-curtir">versus</em>
-                        <p class="custom-curtir">Curtir</p>
+                        <em class="custom-versus">versus</em>
+                        <p class="custom-versus">Curtir</p>
                     </div>
-                    <strong class="fragment roll-in custom-clareza">Clareza</strong>
-                    <strong class="fragment roll-in custom-concisao">Concisão</strong>
+                    <strong class="fragment roll-in custom-clareza custom-frase-efeito">Clareza</strong>
+                    <strong class="fragment roll-in custom-concisao custom-frase-efeito">Concisão</strong>
                 </section>
 
                 <section>
                     <h2>Mas o que é conciso?</h2>
                     <img src="BAIXAR" alt="Bebê fofo com cara de dúvida">
+                </section>
+
+                <section>
+                    <h2>Aqui ok!</h2>
+                    <p class="custom-versus">Vossa mensagem apeteceu-me de tal forma que demonstrarei publicamente meu regozijo apertando o botão de meu dispositivo de apontamento sobre esta região do documento.</p>
+                    <em class="custom-versus">versus</em>
+                    <p class="custom-versus">Curtir</p>
+                </section>
+
+                <section>
+                    <h2>Mas e aqui?</h2>
+<pre class="custom-versus"><code data-trim contenteditable>
+assertEquals(true, Modifier.isPublic(cls.getModifiers()));
+assertEquals(false, Modifier.isFinal(cls.getModifiers()));
+</code></pre>
+                    <em class="custom-versus">versus</em>
+<pre class="custom-versus"><code data-trim contenteditable>
+assertThat(cls, both(isPublic(), not(isFinal())));
+</code></pre>
+                    <strong class="fragment roll-in custom-frase-efeito custom-curto-conciso">
+                        <img src="BAIXAR" alt="Joinha!" class="custom-joinha">
+                        <span class="custom-frase-efeito-parte">+ curto</span>
+                        <span class="custom-frase-efeito-parte">=</span>
+                        <span class="custom-frase-efeito-parte">+ conciso</span>
+                    </strong>
+                </section>
+
+                <section>
+                    <h2>E aqui?</h2>
+                    <p class="custom-versus">testClass</p>
+                    <em class="custom-versus">versus</em>
+                    <p class="custom-versus">classIsPublicNotFinalWithOneProtectedConstructor</p>
+                </section>
+
+                <section>
+                    <h2>E aqui? É conciso?</h2>
+<pre class="custom-versus"><code data-trim contenteditable>
+public void canProvideCustomRequestScopedComponents() {
+    checkAvailabilityFor(false,
+        Arrays.&lt;Class&lt;?&gt;&gt;asList(MyRequestComponent.class));
+}
+</code></pre>
                 </section>
 
 				<!-- Example of nested vertical slides -->

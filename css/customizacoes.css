@@ -2,17 +2,21 @@
     margin-top: 1em;
 }
 
-.reveal .custom-curtir {
+.reveal .custom-versus {
     margin: 1em;
 }
 
-.reveal .custom-clareza,
-.reveal .custom-concisao {
+.reveal .custom-frase-efeito {
     position: absolute;
     font-size: 600%;
     text-transform: uppercase;
     font-family: 'League Gothic';
     text-shadow: 1px 1px rgba(0,0,0,0.6);
+}
+
+.reveal .custom-frase-efeito-parte {
+    display: block;
+    height: .75em;
 }
 
 .reveal .custom-clareza {
@@ -34,4 +38,16 @@
 
 .reveal .custom-concisao.visible {
     transform: scale(1) !important;
+}
+
+.reveal .custom-curto-conciso {
+    top: 0;
+    left: 0;
+    color: rgba(255, 160, 20, 0.8);
+    width: 100%;
+}
+
+.reveal .custom-joinha {
+    position: absolute;
+    left: 100%;
 }
