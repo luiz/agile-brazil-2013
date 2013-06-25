@@ -20,6 +20,9 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+        <!-- CSS customizado -->
+		<link rel="stylesheet" href="css/customizacoes.css">
+
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -36,29 +39,108 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-markdown>
-                    <script type="text/template">
-                        Maravilha! #not
-                        ===============
+				<section>
+                    <h2>teste == documentação</h2>
 
-                        ```java
-public void testTest() {
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+    assertEquals(true, Modifier.isPublic(cls.getModifiers()));
+    assertEquals(false, Modifier.isFinal(cls.getModifiers()));
+
+    assertEquals(1, cls.getDeclaredConstructors().length);
+    assertEquals(true, Modifier.isProtected(cls.getDeclaredConstructors()[0].getModifiers()));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
 }
-                        ```
-                    </script>
+</code></pre>
+                    <p class="fragment roll-in">Boa documentação?</p>
+                    <aside class="notes">
+                        O código de teste documenta algumas propriedades que a classe DateTimeUtils deve seguir. Mas será que ela documenta bem?
+                    </aside>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+					<h2>Se você acha que sim...</h2>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+                    <img alt="Tio Sam quer você" src="BAIXAR" class="fragment roll-in">
 				</section>
+
+                <section>
+                    <section>
+                        <h1>Testes legíveis, projetos felizes</h1>
+                        <h2 class="custom-autor">Luiz Fernando Oliveira Corte Real</h2>
+                        <h3>@srsaude</h3>
+                    </section>
+                    <section>
+                        <h2>About</h2>
+                        <p class="fragment shrink">Mestre em Ciência da Computação <img src="BAIXAR" alt="Isso sim é mestre!"></p>
+                        <p class="fragment roll-in">Desenvolvedor e instrutor na Caelum</p>
+                    </section>
+                    <section>
+                        <h2>About Caelum</h2>
+                        <img class="fragment roll-in" alt="Cursos" src="BAIXAR">
+                        <img class="fragment roll-in" alt="Online também" src="BAIXAR">
+                        <img class="fragment roll-in" alt="Livros" src="BAIXAR">
+                        <img class="fragment roll-in" alt="Open source" src="BAIXAR">
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Pra quê testes?</h2>
+                    <img src="BAIXAR" alt="Nah, nem precisa!">
+                </section>
+
+                <section>
+                    <h2>Por vários motivos!</h2>
+                    <img src="BAIXAR" alt="Tudo verde!">
+                    <img src="BAIXAR" alt="Refatoração" class="fragment roll-in">
+                </section>
+
+                <section>
+                    <h1>Fim?</h1>
+                </section>
+
+                <section>
+                    <h2>Ah, é...</h2>
+                    <img src="BAIXAR" alt="Documentação">
+                </section>
+
+                <section>
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+    assertEquals(true, Modifier.isPublic(cls.getModifiers()));
+    assertEquals(false, Modifier.isFinal(cls.getModifiers()));
+
+    assertEquals(1, cls.getDeclaredConstructors().length);
+    assertEquals(true, Modifier.isProtected(cls.getDeclaredConstructors()[0].getModifiers()));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    <img class="fragment roll-in" src="BAIXAR" alt="Demorou para entender?">
+                    <aside class="notes">
+                        <p>Esse código ajuda a saber se o projeto funciona? Ajuda a refatorar? E a documentar?</p>
+                        <p>Ajuda em tudo isso, mas será que pode melhorar?</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Sobre o que é isso?</h2>
+                    <p class="custom-curtir">Vossa mensagem apeteceu-me de tal forma que demonstrarei publicamente meu regozijo apertando o botão de meu dispositivo de apontamento sobre esta região do documento.</p>
+                    <div class="fragment roll-in">
+                        <em class="custom-curtir">versus</em>
+                        <p class="custom-curtir">Curtir</p>
+                    </div>
+                    <strong class="fragment roll-in custom-clareza">Clareza</strong>
+                    <strong class="fragment roll-in custom-concisao">Concisão</strong>
+                </section>
+
+                <section>
+                    <h2>Mas o que é conciso?</h2>
+                    <img src="BAIXAR" alt="Bebê fofo com cara de dúvida">
+                </section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
@@ -149,39 +231,6 @@ public class Main {
 }
 						```
 					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
 				</section>
 
 				<section>
