@@ -288,6 +288,78 @@ public void testClass() {
 
                 <section>
                     <section>
+                        <h2>Outro exemplo!</h2>
+<pre><code data-trim contenteditable>
+it "should update timestamp if last updated more than one day ago" do
+  @job.attributes = valid_job_attributes
+  @job.updated_at = 2.days.ago
+  Job.record_timestamps = false
+  @job.save
+  Job.record_timestamps = true
+  updated_at = @job.updated_at
+  @job.update_attributes :title =&gt; 'teste'
+  @job.updated_at.should_not eql(updated_at)
+  @job.title.should eql('teste')
+end
+</code></pre>
+                        <div class="fragment roll-in custom-highlight custom-highlight-job">
+                            Ruído!
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Melhor?</h2>
+<pre><code data-trim contenteditable>
+it "should update timestamp if last updated more than one day ago" do
+  two_days_ago = 2.days.ago
+  @job.attributes = valid_job_attributes
+  @job.updated_at = two_days_ago
+  @job.save_without_timestamps
+
+  @job.update_attributes :title =&gt; 'teste'
+
+  @job.updated_at.should_not eql(two_days_ago)
+  @job.title.should eql('teste')
+end
+</code></pre>
+                        <div class="fragment roll-in custom-highlight custom-highlight-espaco">
+                            Espaço
+                        </div>
+                        <aside class="notes">
+                            Remover código de infra é importante, mas espaços
+                            também são importantes para ajudar o código a ficar
+                            mais legível
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Espaços? Onde?</h2>
+                        <ol>
+                            <li>Contexto (<em>Given</em>)</li>
+                            <li>Ação (<em>When</em>)</li>
+                            <li>Resultados (<em>Then</em>)</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2><em>Given/When/Then</em></h2>
+<pre><code data-trim contenteditable>
+it "should update timestamp if last updated more than one day ago" do
+  two_days_ago = 2.days.ago
+  @job.attributes = valid_job_attributes
+  @job.updated_at = two_days_ago
+  @job.save_without_timestamps
+
+  @job.update_attributes :title =&gt; 'teste'
+
+  @job.updated_at.should_not eql(two_days_ago)
+  @job.title.should eql('teste')
+end
+</code></pre>
+                    </section>
+                </section>
+
+                <!-- TODO deixar mais para o final os 3 slides abaixo -->
+
+                <section>
+                    <section>
                         <h2>Dá para melhorar?</h2>
 
                         <img src="BAIXAR (na vdd, gerar)" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
@@ -301,6 +373,23 @@ public void testClass() {
                         </ul>
                         <p class="fragment roll-in">Fundamental para TDD! <img src="BAIXAR" alt="Aniche, o Encantado"></p>
                     </section>
+                </section>
+
+                <section>
+                    <h2>Mais informação</h2>
+<pre><code data-trim contenteditable>
+public void classIsPublicNotFinalWithOneProtectedConstructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue("Class is public", isPublic(cls));
+    assertFalse("Class is not final", isFinal(cls)));
+    assertTrue("Class has only one constructor and it's protected",
+            hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    <h2 class="fragment roll-in">= mais legibilidade</h2>
                 </section>
 
 				<!-- Example of nested vertical slides -->

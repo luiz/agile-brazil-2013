@@ -64,3 +64,44 @@
     transform: translate(-50%, -50%) rotate(-20deg) !important;
     color: rgba(255, 20, 20, 0.8);
 }
+
+.reveal .custom-highlight {
+    font-family: 'League Gothic';
+    text-transform: uppercase;
+    border: .125em solid #F00;
+    border-radius: .25em;
+    color: #F00;
+    font-size: 200%;
+    text-shadow: 0 0 .125em #CCC;
+    box-shadow: 0 0 .25em #CCC;
+    position: absolute;
+}
+
+.reveal .custom-highlight-job {
+    text-indent: 55%;
+    width: 50%;
+    left: 6%;
+    height: 28%;
+    top: 37%;
+}
+
+.reveal .custom-highlight-job.visible {
+    animation: pisca-um-pouco 0.5s 3;
+    animation-delay: 1s;
+}
+
+.reveal .custom-highlight-espaco {
+    width: 60%;
+    text-indent: 65%;
+    top: 57%;
+    left: 6%;
+}
+
+@keyframes pisca-um-pouco {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
