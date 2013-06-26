@@ -73,6 +73,7 @@ public void testClass() {
                         <h1>Testes legíveis, projetos felizes</h1>
                         <h2 class="custom-autor">Luiz Fernando Oliveira Corte Real</h2>
                         <h3>@srsaude</h3>
+                        <h3>github.com/luiz</h3>
                     </section>
                     <section>
                         <h2>About</h2>
@@ -206,6 +207,100 @@ public void canProvideCustomRequestScopedComponents() {
                     </ul>
                     <h2 class="fragment roll-in custom-conclusao">⇒ código mais fácil de manter</h2>
                     <p class="fragment roll-in">(mais legível)</p>
+                </section>
+
+                <section>
+                    <h2><em>Tell, don't ask</em></h2>
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+    assertEquals(true, Modifier.isPublic(cls.getModifiers()));
+    assertEquals(false, Modifier.isFinal(cls.getModifiers()));
+
+    assertEquals(1, cls.getDeclaredConstructors().length);
+    assertEquals(true, Modifier.isProtected(
+            cls.getDeclaredConstructors()[0].getModifiers()));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    <strong class="fragment roll-in custom-frase-efeito custom-gets">5 gets!</strong>
+                    <aside class="notes">
+                        Nesse teste, não estamos seguindo o <em>Tell, don't
+                        ask</em>. Estamos nós mesmos indo atrás da
+                        informação para verificar se a classe tem as
+                        propriedades que queremos.
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><em>Telling</em></h2>
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2><em>Doing</em></h2>
+<pre><code data-trim contenteditable>
+private boolean isPublic(Class cls) {
+    return Modifier.isPublic(cls.getModifiers());
+}
+
+private boolean isFinal(Class cls) {
+    return Modifier.isFinal(cls.getModifiers());
+}
+
+private boolean hasOnlyConstructors(Class cls,
+        MyConstructorDescriptionClass... constructors) {
+    if (constructors.length != cls.length) {
+        return false;
+    }
+    // código meio feio aqui
+}
+</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Menos ruído</h2>
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    <h2>= mais legibilidade</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Dá para melhorar?</h2>
+
+                        <img src="BAIXAR (na vdd, gerar)" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
+                    </section>
+
+                    <section>
+                        <h2>Teste == documentação</h2>
+                        <ul>
+                            <li>De como deve funcionar</li>
+                            <li class="fragment roll-in"><strong>Do que está errado</strong></li>
+                        </ul>
+                        <p class="fragment roll-in">Fundamental para TDD! <img src="BAIXAR" alt="Aniche, o Encantado"></p>
+                    </section>
                 </section>
 
 				<!-- Example of nested vertical slides -->

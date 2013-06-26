@@ -56,3 +56,11 @@
     margin-top: 1em;
     margin-bottom: .25em;
 }
+
+.reveal .custom-gets {
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg) !important;
+    color: rgba(255, 20, 20, 0.8);
+}
