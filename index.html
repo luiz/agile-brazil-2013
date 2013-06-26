@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Testes legíveis, projetos felizes - Luiz Fernando Oliveira Corte Real</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Escreva testes legíveis e torne seu projeto mais fácil de manter e estender">
+		<meta name="author" content="Luiz Fernando Oliveira Corte Real">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -42,7 +42,7 @@
 				<section>
                     <h2>teste == documentação</h2>
 
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
     assertEquals(true, Modifier.isPublic(cls.getModifiers()));
@@ -112,7 +112,7 @@ public void testClass() {
                 </section>
 
                 <section>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
     assertEquals(true, Modifier.isPublic(cls.getModifiers()));
@@ -158,12 +158,12 @@ public void testClass() {
 
                     <section>
                         <h2>Mas e aqui?</h2>
-<pre class="custom-versus"><code data-trim contenteditable>
+<pre class="custom-versus"><code data-trim contenteditable class="java">
 assertEquals(true, Modifier.isPublic(cls.getModifiers()));
 assertEquals(false, Modifier.isFinal(cls.getModifiers()));
 </code></pre>
                         <em class="custom-versus">versus</em>
-<pre class="custom-versus"><code data-trim contenteditable>
+<pre class="custom-versus"><code data-trim contenteditable class="java">
 assertThat(cls, both(isPublic(), not(isFinal())));
 </code></pre>
                         <strong class="fragment roll-in custom-frase-efeito custom-curto-conciso">
@@ -211,7 +211,7 @@ public void canProvideCustomRequestScopedComponents() {
 
                 <section>
                     <h2><em>Tell, don't ask</em></h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
     assertEquals(true, Modifier.isPublic(cls.getModifiers()));
@@ -236,7 +236,7 @@ public void testClass() {
                 <section>
                     <section>
                         <h2><em>Telling</em></h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
 
@@ -250,7 +250,7 @@ public void testClass() {
                     </section>
                     <section>
                         <h2><em>Doing</em></h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 private boolean isPublic(Class cls) {
     return Modifier.isPublic(cls.getModifiers());
 }
@@ -272,7 +272,7 @@ private boolean hasOnlyConstructors(Class cls,
 
                 <section>
                     <h2>Menos ruído</h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
 
@@ -289,7 +289,7 @@ public void testClass() {
                 <section>
                     <section>
                         <h2>Dá pra melhorar?</h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void testClass() {
     Class cls = DateTimeUtils.class;
 
@@ -304,7 +304,7 @@ public void testClass() {
                     <section>
                         <h2>Dá!</h2>
                         <p>Boa prática: nomes claros</p>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void classIsPublicNotFinalWithOneProtectedConstructor() {
     Class cls = DateTimeUtils.class;
 
@@ -320,7 +320,7 @@ public void classIsPublicNotFinalWithOneProtectedConstructor() {
                         <h2>Melhor ainda!</h2>
                         <p class="fragment highlight-red">Má prática: não seguir a convenção da linguagem</p>
                         <p class="fragment highlight-blue">Boa prática: quebrar as regras quando isso te ajudar</p>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void class_is_public_not_final_with_one_protected_constructor() {
     Class cls = DateTimeUtils.class;
 
@@ -343,7 +343,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
                 <section>
                     <section>
                         <h2>Outro exemplo!</h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="ruby">
 it "should update timestamp if last updated more than one day ago" do
   @job.attributes = valid_job_attributes
   @job.updated_at = 2.days.ago
@@ -362,7 +362,7 @@ end
                     </section>
                     <section>
                         <h2>Melhor?</h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="ruby">
 it "should update timestamp if last updated more than one day ago" do
   two_days_ago = 2.days.ago
   @job.attributes = valid_job_attributes
@@ -394,7 +394,7 @@ end
                     </section>
                     <section>
                         <h2><em>Given/When/Then</em></h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="ruby">
 it "should update timestamp if last updated more than one day ago" do
   two_days_ago = 2.days.ago
   @job.attributes = valid_job_attributes
@@ -431,7 +431,7 @@ end
 
                 <section>
                     <h2>Mais informação</h2>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="java">
 public void classIsPublicNotFinalWithOneProtectedConstructor() {
     Class cls = DateTimeUtils.class;
 
