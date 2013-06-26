@@ -288,6 +288,60 @@ public void testClass() {
 
                 <section>
                     <section>
+                        <h2>Dá pra melhorar?</h2>
+<pre><code data-trim contenteditable>
+public void testClass() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Dá!</h2>
+                        <p>Boa prática: nomes claros</p>
+<pre><code data-trim contenteditable>
+public void classIsPublicNotFinalWithOneProtectedConstructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Melhor ainda!</h2>
+                        <p class="fragment highlight-red">Má prática: não seguir a convenção da linguagem</p>
+                        <p class="fragment highlight-blue">Boa prática: quebrar as regras quando isso te ajudar</p>
+<pre><code data-trim contenteditable>
+public void class_is_public_not_final_with_one_protected_constructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                        <aside class="notes">
+                            Às vezes vale a pena quebrar as convenções de
+                            sua ferramenta/linguagem/paradigma de
+                            programação para deixar seu código mais
+                            legível
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
                         <h2>Outro exemplo!</h2>
 <pre><code data-trim contenteditable>
 it "should update timestamp if last updated more than one day ago" do
