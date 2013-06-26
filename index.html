@@ -183,19 +183,26 @@ assertThat(cls, both(isPublic(), not(isFinal())));
 
                     <section>
                         <h2>E aqui? É conciso?</h2>
-<pre class="custom-versus"><code data-trim contenteditable>
+<pre class="custom-versus"><code data-trim contenteditable class="java">
 public void canProvideCustomRequestScopedComponents() {
     checkAvailabilityFor(false,
         Arrays.&lt;Class&lt;?&gt;&gt;asList(MyRequestComponent.class));
 }
 </code></pre>
                     </section>
-
+                    <section>
+                        <h2>Conciso = curto, mas suficiente para
+                            <span class="fragment highlight-red">passar informação</span>
+                        </h2>
+                    </section>
                     <section>
                         <h1>Conciso = ?</h1>
                         <h2>(subjetivo)</h2>
                         <p class="fragment roll-in">Mas...</p>
                     </section>
+                    <aside class="notes">
+                        Até aqui uns 10 minutos?
+                    </aside>
                 </section>
 
                 <section>
@@ -407,6 +414,155 @@ it "should update timestamp if last updated more than one day ago" do
   @job.title.should eql('teste')
 end
 </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Testes de aceitação</h2>
+                        <h3 class="fragment roll-in">(dor)</h3>
+                    </section>
+                    <section>
+                        <h2>Por que!?</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    Page currentPage = browser.currentPage();
+
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_prox_" + amanha.getId())
+            .exists());
+}
+</code></pre>
+                        <p class="fragment roll-in">Hmm... ok! :)</p>
+                    </section>
+                    <section>
+                        <h2>Por que!?!?</h2>
+<pre><code data-trim contenteditable class="java">
+public void someComTarefaJaPronta() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    Page currentPage = browser.currentPage();
+
+    currentPage.click("feita_" + amanha.getId());
+    currentPage.navigate("jqibuttonSim");
+
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
+            .exists());
+    assertFalse(currentPage.div("tarefa_prox_" + amanha.getId())
+            .exists());
+}
+</code></pre>
+                        <p class="fragment roll-in">Fácil!</p>
+                    </section>
+                    <section>
+                        <blockquote>
+                            Refatorei o <span class="fragment custom-grow">JavaScript</span> da página!
+                        </blockquote>
+                        <small class="custom-quote-author">o colega de trabalho que você quer matar agora</small>
+                    </section>
+                    <section>
+                        <h2>Por que!?!?!?</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    Page currentPage = browser.currentPage();
+
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_prox_" + amanha.getId())
+            .exists());
+}
+</code></pre>
+                        <div class="fragment roll-in custom-highlight custom-highlight-ids">
+                            Aqui
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Por que!?!?!?!?</h2>
+<pre><code data-trim contenteditable class="java">
+public void someComTarefaJaPronta() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    Page currentPage = browser.currentPage();
+
+    currentPage.click("feita_" + amanha.getId());
+    currentPage.navigate("jqibuttonSim");
+
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
+            .exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
+            .exists());
+    assertFalse(currentPage.div("tarefa_prox_" + amanha.getId())
+            .exists());
+}
+</code></pre>
+                        <div class="fragment roll-in custom-highlight custom-highlight-ids2">
+                            Também
+                        </div>
+                        <h2 class="fragment roll-in">Código repetido!</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>De volta à orientação a objetos...</h2>
+                        <p>Copiou, colou? Isolou!</p>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    PaginaDeTarefas tarefas = new PaginaDeTarefas(browser);
+
+    assertTrue(tarefas.mostrouTarefaAtrasada(atrasada));
+    assertTrue(tarefas.mostrouTarefaHoje(hoje));
+    assertTrue(tarefas.mostrouProximaTarefa(amanha));
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>De volta à orientação a objetos...</h2>
+                        <p>Copiou, colou? Isolou!</p>
+<pre><code data-trim contenteditable class="java">
+public class PaginaDeTarefas {
+    // construtor
+
+    public boolean mostrouTarefaAtrasada(Tarefa atrasada) {
+        return currentPage.div("tarefa_atrasada_" + atrasada.getId())
+            .exists();
+    }
+
+    public boolean mostrouTarefaHoje(Tarefa hoje) {
+        return currentPage.div("tarefa_hoje_" + hoje.getId())
+            .exists();
+    }
+
+    public boolean mostrouProximaTarefa(Tarefa amanha) {
+        return currentPage.div("tarefa_prox_" + amanha.getId())
+            .exists();
+    }
+}
+</code></pre>
+                        <strong class="fragment roll-in custom-frase-efeito custom-page-object"><em>Page Object</em></strong>
                     </section>
                 </section>
 

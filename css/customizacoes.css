@@ -1,3 +1,28 @@
+.reveal blockquote {
+    padding: 2em;
+    display: block;
+    position: relative;
+}
+
+.reveal blockquote:before,
+.reveal blockquote:after {
+    font-family: serif;
+    font-size: 400%;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.reveal blockquote:before {
+    content: '“';
+    left: 0;
+}
+
+.reveal blockquote:after {
+    content: '”';
+    bottom: 0;
+    right: 0;
+}
+
 .reveal .custom-autor {
     margin-top: 1em;
 }
@@ -90,13 +115,6 @@
     animation-delay: 1s;
 }
 
-.reveal .custom-highlight-espaco {
-    width: 60%;
-    text-indent: 65%;
-    top: 57%;
-    left: 6%;
-}
-
 @keyframes pisca-um-pouco {
     0%, 100% {
         opacity: 1;
@@ -104,4 +122,55 @@
     50% {
         opacity: 0;
     }
+}
+
+.reveal .custom-highlight-espaco {
+    width: 60%;
+    text-indent: 65%;
+    top: 57%;
+    left: 6%;
+}
+
+.reveal .custom-grow {
+    opacity: 1 !important;
+}
+
+.reveal .custom-grow.visible {
+    font-size: 150%;
+    margin: .1em;
+}
+
+.reveal .custom-quote-author {
+    text-align: right;
+    font-style: italic;
+    opacity: 0.8;
+    float: right;
+}
+
+.reveal .custom-quote-author:before {
+    content: '--';
+}
+
+.reveal .custom-highlight-ids {
+    width: 23%;
+    top: 53%;
+    text-indent: 28%;
+    left: 40%;
+    height: 30%;
+}
+
+.reveal .custom-highlight-ids2 {
+    width: 23%;
+    top: 53%;
+    text-indent: 28%;
+    left: 40%;
+    height: 20%;
+}
+
+.reveal .custom-page-object {
+    top: 50%;
+    left: 50%;
+    line-height: 100%;
+    transform: translate(-50%, -50%) !important;
+    color: rgba(20, 255, 20, 0.8);
 }
