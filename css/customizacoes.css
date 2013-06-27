@@ -174,3 +174,9 @@
     transform: translate(-50%, -50%) !important;
     color: rgba(20, 255, 20, 0.8);
 }
+
+.reveal .custom-img {
+    height: 60vh;
+    border: none;
+    padding: 1%;
+}
