@@ -762,7 +762,7 @@ public void canProvideCustomRequestScopedComponents() {
         Arrays.&lt;Class&lt;?&gt;&gt;asList(MyRequestComponent.class));
 }
 </code></pre>
-                    <img src="BAIXAR" alt="Too dry!">
+                    <img src="BAIXAR" alt="Too dry!" class="fragment roll-in">
                 </section>
 
                 <section>
@@ -771,7 +771,6 @@ public void canProvideCustomRequestScopedComponents() {
 
                         <img src="BAIXAR (na vdd, gerar)" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
                     </section>
-
                     <section>
                         <h2>Teste == documentação</h2>
                         <ul>
@@ -780,9 +779,19 @@ public void canProvideCustomRequestScopedComponents() {
                         </ul>
                         <p class="fragment roll-in">Fundamental para TDD! <img src="BAIXAR" alt="Aniche, o Encantado"></p>
                     </section>
-                </section>
+                    <section>
+<pre><code data-trim contenteditable class="java">
+public void class_is_public_not_final_with_one_protected_constructor() {
+    Class cls = DateTimeUtils.class;
 
-                <section>
+    assertTrue(isPublic(cls));
+    assertFalse(isFinal(cls)));
+    assertTrue(hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                    </section>
                     <section>
                         <h2>Mais informação</h2>
 <pre><code data-trim contenteditable class="java">
@@ -801,6 +810,115 @@ public void class_is_public_not_final_with_one_protected_constructor() {
                     </section>
                     <section>
                         <img src="BAIXAR (na vdd, gerar)" alt="Mensagens de erro legíveis">
+                    </section>
+                </section>
+
+                <section>
+                    <h1>Dá para melhorar?</h1>
+                    <h2 class="fragment roll-in">Ferramentas</h2>
+                </section>
+
+                <section>
+                    <section>
+<pre><code data-trim contenteditable class="java">
+public void class_is_public_not_final_with_one_protected_constructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue("Class is public", isPublic(cls));
+    assertFalse("Class is not final", isFinal(cls)));
+    assertTrue("Class has only one constructor and it's protected",
+            hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                        <div class="fragment roll-in custom-highlight custom-highlight-redundante">
+                            Redundância
+                        </div>
+                        <strong class="fragment roll-in"><code>isPublic</code>, <code>isFinal</code>: onde colocar?</strong>
+                    </section>
+                    <section>
+                        <h2>Hamcrest</h2>
+<pre><code data-trim contenteditable class="java">
+public void class_is_public_not_final_with_one_protected_constructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertThat(cls, MyMatchers.isPublic());
+    assertThat(cls, MyMatchers.isFinal()));
+    assertThat(cls.getDeclaredConstructors(),
+            Matchers.hasItems(MyMatchers.protectedConstructor()));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                        <strong class="fragment roll-in custom-frase-efeito custom-frase-calma">Calma!</strong>
+                        <aside class="notes">
+                            Hamcrest é uma ferramenta nascida no mundo
+                            Java, mas isso não significa que se aplica
+                            somente ao mundo Java. Existem bibliotecas
+                            semelhantes para diversas linguagens.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Calma :)</h2>
+<pre><code data-trim contenteditable class="java">
+public void cool_asserts() {
+    assertThat(true, isTrue());
+    assertThat(123, equalTo(123));
+    assertThat("important", containsString("ant"));
+    assertThat(Arrays.asList(1, 2, 3), hasItems(2, 3));
+    assertThat(Arrays.asList(1, 2, 3), not(hasItems(4)));
+}
+</code></pre>
+                        <small>Métodos da classe org.hamcrest.Matchers</small>
+                    </section>
+                    <section>
+                        <img src="BAIXAR" alt="Teste falhando e mensagem de erro">
+                    </section>
+                    <section>
+                        <h2>O céu é o limite</h2>
+<pre><code data-trim contenteditable class="java">
+assertThat(tarefa, ehPara(mother.ontem()));
+</code></pre>
+                        <h3 class="fragment roll-in">Matcher customizado</h3>
+                    </section>
+                    <section>
+<pre><code data-trim contenteditable class="java">
+public class PrazoDeTarefaMatcher extends TypeSafeMatcher&lt;Tarefa&gt; {
+    private Calendar prazoEsperado;
+    public PrazoDeTarefaMatcher(Calendar prazoEsperado) {
+        this.prazoEsperado = prazoEsperado;
+    }
+    public boolean matchesSafely(Tarefa recebida) {
+        return recebida.getPrazo().equals(this.prazoEsperado);
+    }
+    public void describeTo(Description desc) {
+        desc.appendText("Tarefa para " + this.prazoEsperado);
+    }
+    @Factory
+    public static PrazoDeTarefaMatcher ehPara(Calendar prazo) {
+        return new PrazoDeTarefaMatcher(prazo);
+    }
+}
+</code></pre>
+                        <span class="fragment roll-in custom-seta custom-seta1">←</span>
+                        <span class="fragment roll-in custom-seta custom-seta2">←</span>
+                        <span class="fragment roll-in custom-seta custom-seta3">←</span>
+                        <aside class="notes">
+                            Código simplificado. Não dá pra usar Calendar tão fácil assim.
+                        </aside>
+                    </section>
+                    <section>
+                        <img src="BAIXAR" alt="Teste com o matcher de Tarefa falhando">
+                    </section>
+                    <section>
+                        <h2>Mais Hamcrest</h2>
+                        <a href="http://blog.caelum.com.br/melhorando-a-legibilidade-dos-seus-testes-com-o-hamcrest/">
+                            http://is.gd/2DfDsA
+                        </a>
                     </section>
                 </section>
 

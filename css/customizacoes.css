@@ -199,3 +199,56 @@
     color: rgba(90, 180, 255, 0.8);
     line-height: 100%;
 }
+
+.reveal .custom-highlight-redundante {
+    top: 28%;
+    left: 18%;
+    width: 65%;
+    text-indent: 70%;
+    height: 27%;
+    color: rgba(255,20,0,0.8);
+    border-color: rgba(255,20,0,0.8);
+}
+
+.reveal .custom-frase-calma {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
+    color: rgba(80,200,250,0.8);
+}
+
+.reveal .custom-seta {
+    text-shadow: 0 0 .125em #CCC;
+    font-weight: bold;
+    font-size: 200%;
+    font-family: 'League Gothic';
+    color: rgba(255, 20, 20, 0.8);
+    position: absolute;
+    right: 14%;
+}
+
+.reveal .custom-seta1 {
+    top: 33%;
+}
+
+.reveal .custom-seta2 {
+    top: 47.5%;
+}
+
+.reveal .custom-seta3 {
+    top: 68.5%;
+}
+
+.reveal .visible.custom-seta {
+    animation: some-e-aparece 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes some-e-aparece {
+    0%, 95% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
