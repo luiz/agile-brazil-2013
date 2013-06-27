@@ -180,3 +180,22 @@
     border: none;
     padding: 1%;
 }
+
+.reveal .custom-highlight-tarefas {
+    top: 30%;
+    left: 9%;
+    width: 46%;
+    text-indent: 49%;
+    height: 19%;
+    color: rgba(255, 255, 20, 0.8);
+    border-color: rgba(255, 255, 20, 0.8);
+}
+
+.reveal .custom-copiar-colar {
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    color: rgba(90, 180, 255, 0.8);
+    line-height: 100%;
+}

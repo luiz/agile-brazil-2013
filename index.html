@@ -97,7 +97,8 @@ public void testClass() {
 
                     <section>
                         <h2>Por vários motivos!</h2>
-                        <img src="BAIXAR" alt="Tudo verde!">
+                        <img src="BAIXAR (foto do Aniche)" alt="TDD">
+                        <img src="BAIXAR" alt="Tudo verde!" class="fragment roll-in">
                         <img src="BAIXAR" alt="Refatoração" class="fragment roll-in">
                     </section>
                 </section>
@@ -569,6 +570,154 @@ public class PaginaDeTarefas {
                 <section>
                     <h2><em>Page Objects</em></h2>
                     <img src="img/page-objects.svg" alt="Diagrama do conceito de page objects" class="custom-img">
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Cria a tarefa...</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Tarefa atrasada = ... // cria a tarefa
+    Tarefa hoje = ... // cria a tarefa
+    Tarefa amanha = ... // cria a tarefa
+
+    PaginaDeTarefas tarefas = new PaginaDeTarefas(browser);
+
+    assertTrue(tarefas.mostrouTarefaAtrasada(atrasada));
+    assertTrue(tarefas.mostrouTarefaHoje(hoje));
+    assertTrue(tarefas.mostrouProximaTarefa(amanha));
+}
+</code></pre>
+                        <div class="custom-highlight custom-highlight-tarefas">
+                            #comofas
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Assim!</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Calendar ontem = Calendar.getInstance();
+    ontem.roll(Calendar.DAY, -1);
+    Calendar hoje = Calendar.getInstance();
+    Calendar amanha = Calendar.getInstance();
+    amanha.roll(Calendar.DAY, 1);
+    Tarefa atrasada = new Tarefa(usuario, ontem,
+                            new Categoria(),
+                            "Terminar palestra");
+    Tarefa hoje = new Tarefa(usuario, hoje,
+                            new Categoria(),
+                            "Apresentar palestra");
+    Tarefa amanha = new Tarefa(usuario, amanha,
+                            new Categoria(),
+                            "Descansar");
+    // ...
+}
+</code></pre>
+                        <p class="fragment roll-in">Hmmm... :/</p>
+                    </section>
+                    <section>
+                        <h2>Acho que já vi isso antes...</h2>
+<pre><code data-trim contenteditable class="java">
+public void testeSemMocks() {
+    Produtos p = new Produtos(
+            new Item(new Categoria(), new Valor()),
+            new Item(new Categoria(), new Valor()));
+    // ...
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>criaItem!</h2>
+<pre><code data-trim contenteditable class="java">
+public void testeSemMocks() {
+    Produtos p = new Produtos(criaItem(), criaItem());
+    // ...
+}
+
+private Item criaItem() {
+    return new Item(new Categoria(), new Valor());
+}
+</code></pre>
+                        <strong class="fragment roll-in custom-frase-efeito custom-copiar-colar">
+                            Copiou, colou? Isolou!
+                        </strong>
+                    </section>
+                    <section>
+                        <h2>Melhor ainda!</h2>
+                        <h3 class="fragment roll-in">Builder</h3>
+<pre class="fragment roll-in"><code data-trim contenteditable class="java">
+public void testeSemMocks() {
+    ItemBuilder itens = new ItemBuilder();
+    Produtos p = new Produtos(itens.cria(), itens.cria());
+    // ...
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Melhor ainda!!</h2>
+                        <h3 class="fragment roll-in">+ DSL</h3>
+<pre class="fragment roll-in"><code data-trim contenteditable class="java">
+public void testeSemMocks() {
+    Builder builder = new Builder();
+    Produtos p = new Produtos(builder.umItem().comValor(15.00).cria(),
+             builder.umItem().comValor(15.00).cria());
+    // ...
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Voltando...</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Calendar ontem = Calendar.getInstance();
+    ontem.roll(Calendar.DAY, -1);
+    Calendar hoje = Calendar.getInstance();
+    Calendar amanha = Calendar.getInstance();
+    amanha.roll(Calendar.DAY, 1);
+    Tarefa atrasada = new Tarefa(usuario, ontem,
+                            new Categoria(),
+                            "Terminar palestra");
+    Tarefa hoje = new Tarefa(usuario, hoje,
+                            new Categoria(),
+                            "Apresentar palestra");
+    Tarefa amanha = new Tarefa(usuario, amanha,
+                            new Categoria(),
+                            "Descansar");
+    // ...
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Voltando...</h2>
+<pre><code data-trim contenteditable class="java">
+public void mostraTarefasDoUsuario() {
+    Tarefa atrasada = mother.umaTarefa()
+                            .para(mother.ontem())
+                            .comDescricao("Terminar palestra")
+                            .build();
+    Tarefa hoje = mother.umaTarefa()
+                            .para(mother.hoje())
+                            .comDescricao("Apresentar palestra")
+                            .build();
+
+    Tarefa amanha = mother.umaTarefa()
+                            .para(mother.amanha())
+                            .comDescricao("Descansar")
+                            .build();
+    // ...
+}
+</code></pre>
+                        <aside class="notes">
+                            O mother é uma fachada de builders. Repare que
+                            a categoria, que não era importante, não
+                            aparece mais: o builder coloca ela pra gente.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>E o builder...</h2>
+                        <!-- TODO mostrar o código do builder -->
+                    </section>
                 </section>
 
                 <!-- TODO deixar mais para o final os 3 slides abaixo -->
