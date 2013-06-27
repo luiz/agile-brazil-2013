@@ -716,11 +716,54 @@ public void mostraTarefasDoUsuario() {
 
                     <section>
                         <h2>E o builder...</h2>
-                        <!-- TODO mostrar o código do builder -->
+<pre><code data-trim contenteditable class="java">
+public class TarefaBuilder {
+    private Tarefa tarefa;
+
+    public TarefaBuilder(ObjectMother mother) {
+        this.mother = mother;
+        this.tarefa = defaults();
+    }
+
+    private Tarefa defaults() {
+        return new Tarefa(mother.umUsuario().build(),
+                mother.hoje(),
+                mother.umaCategoria().build(),
+                "");
+    }
+
+    public TarefaBuilder para(Calendar dia) {
+        tarefa.setPrazo(dia);
+        return this;
+    }
+
+    public TarefaBuilder comDescricao(String descricao) {
+        tarefa.setDescricao(descricao);
+        return this;
+    }
+
+    public Tarefa build() {
+        return tarefa;
+    }
+}
+</code></pre>
                     </section>
                 </section>
 
-                <!-- TODO deixar mais para o final os 3 slides abaixo -->
+                <section>
+                    <h1>Orientação a objetos</h1>
+                </section>
+
+                <section>
+                    <h2>Disclaimer</h2>
+<pre><code data-trim contenteditable class="java">
+public void canProvideCustomRequestScopedComponents() {
+    checkAvailabilityFor(false,
+        Arrays.&lt;Class&lt;?&gt;&gt;asList(MyRequestComponent.class));
+}
+</code></pre>
+                    <img src="BAIXAR" alt="Too dry!">
+                </section>
 
                 <section>
                     <section>
@@ -740,9 +783,10 @@ public void mostraTarefasDoUsuario() {
                 </section>
 
                 <section>
-                    <h2>Mais informação</h2>
+                    <section>
+                        <h2>Mais informação</h2>
 <pre><code data-trim contenteditable class="java">
-public void classIsPublicNotFinalWithOneProtectedConstructor() {
+public void class_is_public_not_final_with_one_protected_constructor() {
     Class cls = DateTimeUtils.class;
 
     assertTrue("Class is public", isPublic(cls));
@@ -753,7 +797,11 @@ public void classIsPublicNotFinalWithOneProtectedConstructor() {
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
-                    <h2 class="fragment roll-in">= mais legibilidade</h2>
+                        <h2 class="fragment roll-in">= mais legibilidade</h2>
+                    </section>
+                    <section>
+                        <img src="BAIXAR (na vdd, gerar)" alt="Mensagens de erro legíveis">
+                    </section>
                 </section>
 
 				<!-- Example of nested vertical slides -->
