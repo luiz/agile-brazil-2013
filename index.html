@@ -916,9 +916,63 @@ public class PrazoDeTarefaMatcher extends TypeSafeMatcher&lt;Tarefa&gt; {
                     </section>
                     <section>
                         <h2>Mais Hamcrest</h2>
+                        <p>Melhorando a legibilidade de seus testes com o Hamcrest</p>
+                        <p><small>(blog da Caelum)</small></p>
                         <a href="http://blog.caelum.com.br/melhorando-a-legibilidade-dos-seus-testes-com-o-hamcrest/">
                             http://is.gd/2DfDsA
                         </a>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Builders!</h2>
+<pre><code data-trim contenteditable class="java">
+public class ObjectMother {
+    public TarefaBuilder umaTarefa() {}
+    public UsuarioBuilder umaTarefa() {}
+    public ProdutoBuilder umaTarefa() {}
+    public ClienteBuilder umaTarefa() {}
+    // 1 para cada entidade ...
+}
+</code></pre>
+                        <small class="fragment roll-in">Trabalho... :(</small>
+                    </section>
+                    <section>
+                        <h2>Ferramentas!</h2>
+                        <ul>
+                            <li>Fixture Factory (Java)</li>
+                            <li>factory_girl (Ruby)</li>
+                            <li>Rosie (JS)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exemplo!</h2>
+<pre><code data-trim contenteditable class="ruby">
+Factory.define :job do |f|
+   f.sequence(:title) {|n| "Title#{n}"}
+   f.sequence(:description)  {|n| "Description#{n}" }
+   f.association :local, :factory =&gt; :local
+   f.association :company, :factory =&gt; :company
+   f.enabled  true
+   f.how_to_apply  "by email"
+   f.terms_accepted  true
+   f.tag_list  'arroz feijao fuba'
+end
+</code></pre>
+                        <p>E depois, para usar:</p>
+<pre><code data-trim contenteditable class="ruby">
+Factory(:job) # já cria e salva no banco
+</code></pre>
+                        <aside class="notes">
+                            <dl>
+                                <dt>Prós</dt>
+                                <dd>menos código, menos manutenção</dd>
+
+                                <dt>Contras</dt>
+                                <dd>Too dry, regras em setters?</dd>
+                            </dl>
+                        </aside>
                     </section>
                 </section>
 
