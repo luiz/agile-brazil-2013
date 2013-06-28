@@ -1,3 +1,7 @@
+.reveal {
+    font-size: 40px;
+}
+
 .reveal blockquote {
     padding: 2em;
     display: block;
@@ -24,7 +28,7 @@
 }
 
 .reveal .custom-autor {
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 .reveal .custom-versus {
@@ -110,20 +114,6 @@
     top: 37%;
 }
 
-.reveal .custom-highlight-job.visible {
-    animation: pisca-um-pouco 0.5s 3;
-    animation-delay: 1s;
-}
-
-@keyframes pisca-um-pouco {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-}
-
 .reveal .custom-highlight-espaco {
     width: 60%;
     text-indent: 65%;
@@ -153,18 +143,18 @@
 
 .reveal .custom-highlight-ids {
     width: 23%;
-    top: 53%;
+    top: 61%;
     text-indent: 28%;
-    left: 40%;
-    height: 30%;
+    left: 36%;
+    height: 21%;
 }
 
 .reveal .custom-highlight-ids2 {
     width: 23%;
-    top: 53%;
+    top: 65%;
     text-indent: 28%;
-    left: 40%;
-    height: 20%;
+    left: 36%;
+    height: 19%;
 }
 
 .reveal .custom-page-object {
@@ -201,7 +191,7 @@
 }
 
 .reveal .custom-highlight-redundante {
-    top: 28%;
+    top: 22%;
     left: 18%;
     width: 65%;
     text-indent: 70%;

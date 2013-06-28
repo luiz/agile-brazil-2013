@@ -430,9 +430,7 @@ public void mostraTarefasDoUsuario() {
     Tarefa atrasada = ... // cria a tarefa
     Tarefa hoje = ... // cria a tarefa
     Tarefa amanha = ... // cria a tarefa
-
     Page currentPage = browser.currentPage();
-
     assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
             .exists());
     assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
@@ -450,12 +448,9 @@ public void someComTarefaJaPronta() {
     Tarefa atrasada = ... // cria a tarefa
     Tarefa hoje = ... // cria a tarefa
     Tarefa amanha = ... // cria a tarefa
-
     Page currentPage = browser.currentPage();
-
     currentPage.click("feita_" + amanha.getId());
     currentPage.navigate("jqibuttonSim");
-
     assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
             .exists());
     assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
@@ -464,7 +459,6 @@ public void someComTarefaJaPronta() {
             .exists());
 }
 </code></pre>
-                        <p class="fragment roll-in">Fácil!</p>
                     </section>
                     <section>
                         <blockquote>
@@ -479,15 +473,10 @@ public void mostraTarefasDoUsuario() {
     Tarefa atrasada = ... // cria a tarefa
     Tarefa hoje = ... // cria a tarefa
     Tarefa amanha = ... // cria a tarefa
-
     Page currentPage = browser.currentPage();
-
-    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
-            .exists());
-    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
-            .exists());
-    assertTrue(currentPage.div("tarefa_prox_" + amanha.getId())
-            .exists());
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId()).exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId()).exists());
+    assertTrue(currentPage.div("tarefa_prox_" + amanha.getId()).exists());
 }
 </code></pre>
                         <div class="fragment roll-in custom-highlight custom-highlight-ids">
@@ -501,24 +490,17 @@ public void someComTarefaJaPronta() {
     Tarefa atrasada = ... // cria a tarefa
     Tarefa hoje = ... // cria a tarefa
     Tarefa amanha = ... // cria a tarefa
-
     Page currentPage = browser.currentPage();
-
     currentPage.click("feita_" + amanha.getId());
     currentPage.navigate("jqibuttonSim");
-
-    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId())
-            .exists());
-    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId())
-            .exists());
-    assertFalse(currentPage.div("tarefa_prox_" + amanha.getId())
-            .exists());
+    assertTrue(currentPage.div("tarefa_atrasada_" + atrasada.getId()).exists());
+    assertTrue(currentPage.div("tarefa_hoje_" + hoje.getId()).exists());
+    assertFalse(currentPage.div("tarefa_prox_" + amanha.getId()).exists());
 }
 </code></pre>
                         <div class="fragment roll-in custom-highlight custom-highlight-ids2">
                             Também
                         </div>
-                        <h2 class="fragment roll-in">Código repetido!</h2>
                     </section>
                 </section>
 
@@ -546,20 +528,14 @@ public void mostraTarefasDoUsuario() {
 <pre><code data-trim contenteditable class="java">
 public class PaginaDeTarefas {
     // construtor
-
     public boolean mostrouTarefaAtrasada(Tarefa atrasada) {
-        return currentPage.div("tarefa_atrasada_" + atrasada.getId())
-            .exists();
+        return currentPage.div("tarefa_atrasada_" + atrasada.getId()).exists();
     }
-
     public boolean mostrouTarefaHoje(Tarefa hoje) {
-        return currentPage.div("tarefa_hoje_" + hoje.getId())
-            .exists();
+        return currentPage.div("tarefa_hoje_" + hoje.getId()).exists();
     }
-
     public boolean mostrouProximaTarefa(Tarefa amanha) {
-        return currentPage.div("tarefa_prox_" + amanha.getId())
-            .exists();
+        return currentPage.div("tarefa_prox_" + amanha.getId()).exists();
     }
 }
 </code></pre>
@@ -601,15 +577,9 @@ public void mostraTarefasDoUsuario() {
     Calendar hoje = Calendar.getInstance();
     Calendar amanha = Calendar.getInstance();
     amanha.roll(Calendar.DAY, 1);
-    Tarefa atrasada = new Tarefa(usuario, ontem,
-                            new Categoria(),
-                            "Terminar palestra");
-    Tarefa hoje = new Tarefa(usuario, hoje,
-                            new Categoria(),
-                            "Apresentar palestra");
-    Tarefa amanha = new Tarefa(usuario, amanha,
-                            new Categoria(),
-                            "Descansar");
+    Tarefa atrasada = new Tarefa(usuario, ontem, new Categoria(), "Acabar palestra");
+    Tarefa hoje = new Tarefa(usuario, hoje, new Categoria(), "Apresentar palestra");
+    Tarefa amanha = new Tarefa(usuario, amanha, new Categoria(), "Descansar");
     // ...
 }
 </code></pre>
@@ -638,14 +608,11 @@ private Item criaItem() {
     return new Item(new Categoria(), new Valor());
 }
 </code></pre>
-                        <strong class="fragment roll-in custom-frase-efeito custom-copiar-colar">
-                            Copiou, colou? Isolou!
-                        </strong>
                     </section>
                     <section>
                         <h2>Melhor ainda!</h2>
-                        <h3 class="fragment roll-in">Builder</h3>
-<pre class="fragment roll-in"><code data-trim contenteditable class="java">
+                        <h3>Builder</h3>
+<pre><code data-trim contenteditable class="java">
 public void testeSemMocks() {
     ItemBuilder itens = new ItemBuilder();
     Produtos p = new Produtos(itens.cria(), itens.cria());
@@ -655,8 +622,8 @@ public void testeSemMocks() {
                     </section>
                     <section>
                         <h2>Melhor ainda!!</h2>
-                        <h3 class="fragment roll-in">+ DSL</h3>
-<pre class="fragment roll-in"><code data-trim contenteditable class="java">
+                        <h3>+ DSL</h3>
+<pre><code data-trim contenteditable class="java">
 public void testeSemMocks() {
     Builder builder = new Builder();
     Produtos p = new Produtos(builder.umItem().comValor(15.00).cria(),
@@ -674,15 +641,9 @@ public void mostraTarefasDoUsuario() {
     Calendar hoje = Calendar.getInstance();
     Calendar amanha = Calendar.getInstance();
     amanha.roll(Calendar.DAY, 1);
-    Tarefa atrasada = new Tarefa(usuario, ontem,
-                            new Categoria(),
-                            "Terminar palestra");
-    Tarefa hoje = new Tarefa(usuario, hoje,
-                            new Categoria(),
-                            "Apresentar palestra");
-    Tarefa amanha = new Tarefa(usuario, amanha,
-                            new Categoria(),
-                            "Descansar");
+    Tarefa atrasada = new Tarefa(usuario, ontem, new Categoria(), "Acabar palestra");
+    Tarefa hoje = new Tarefa(usuario, hoje, new Categoria(), "Apresentar palestra");
+    Tarefa amanha = new Tarefa(usuario, amanha, new Categoria(), "Descansar");
     // ...
 }
 </code></pre>
@@ -699,7 +660,6 @@ public void mostraTarefasDoUsuario() {
                             .para(mother.hoje())
                             .comDescricao("Apresentar palestra")
                             .build();
-
     Tarefa amanha = mother.umaTarefa()
                             .para(mother.amanha())
                             .comDescricao("Descansar")
@@ -793,7 +753,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
 </code></pre>
                     </section>
                     <section>
-                        <h2>Mais informação</h2>
+                        <h2>Mensagens de erro!</h2>
 <pre><code data-trim contenteditable class="java">
 public void class_is_public_not_final_with_one_protected_constructor() {
     Class cls = DateTimeUtils.class;
@@ -806,10 +766,26 @@ public void class_is_public_not_final_with_one_protected_constructor() {
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
-                        <h2 class="fragment roll-in">= mais legibilidade</h2>
                     </section>
                     <section>
                         <img src="BAIXAR (na vdd, gerar)" alt="Mensagens de erro legíveis">
+                    </section>
+                    <section>
+<pre><code data-trim contenteditable class="java">
+public void class_is_public_not_final_with_one_protected_constructor() {
+    Class cls = DateTimeUtils.class;
+
+    assertTrue("Class is public", isPublic(cls));
+    assertFalse("Class is not final", isFinal(cls)));
+    assertTrue("Class has only one constructor and it's protected",
+            hasOnlyConstructors(cls, protectedConstructor));
+
+    DateTimeUtils utils = new DateTimeUtils() {};
+}
+</code></pre>
+                        <em class="fragment roll-in custom-highlight custom-highlight-redundante"></em>
+                        <p class="fragment roll-in"><strong>Redundância :/</strong></p>
+                        <p class="fragment roll-in"><strong><code>isPublic</code>, <code>isFinal</code>: onde colocar?</strong></p>
                     </section>
                 </section>
 
@@ -819,24 +795,6 @@ public void class_is_public_not_final_with_one_protected_constructor() {
                 </section>
 
                 <section>
-                    <section>
-<pre><code data-trim contenteditable class="java">
-public void class_is_public_not_final_with_one_protected_constructor() {
-    Class cls = DateTimeUtils.class;
-
-    assertTrue("Class is public", isPublic(cls));
-    assertFalse("Class is not final", isFinal(cls)));
-    assertTrue("Class has only one constructor and it's protected",
-            hasOnlyConstructors(cls, protectedConstructor));
-
-    DateTimeUtils utils = new DateTimeUtils() {};
-}
-</code></pre>
-                        <div class="fragment roll-in custom-highlight custom-highlight-redundante">
-                            Redundância
-                        </div>
-                        <strong class="fragment roll-in"><code>isPublic</code>, <code>isFinal</code>: onde colocar?</strong>
-                    </section>
                     <section>
                         <h2>Hamcrest</h2>
 <pre><code data-trim contenteditable class="java">
@@ -851,6 +809,9 @@ public void class_is_public_not_final_with_one_protected_constructor() {
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
+                    </section>
+                    <section>
+                        <img src="BAIXAR" alt="Mensagens de erro descritivas">
                         <strong class="fragment roll-in custom-frase-efeito custom-frase-calma">Calma!</strong>
                         <aside class="notes">
                             Hamcrest é uma ferramenta nascida no mundo
@@ -960,9 +921,10 @@ Factory.define :job do |f|
    f.tag_list  'arroz feijao fuba'
 end
 </code></pre>
-                        <p>E depois, para usar:</p>
+                        <small>E depois, para usar:</small>
 <pre><code data-trim contenteditable class="ruby">
 Factory(:job) # já cria e salva no banco
+Factory(:job, :enabled =&gt; false) # customiza
 </code></pre>
                         <aside class="notes">
                             <dl>
@@ -1241,10 +1203,12 @@ function linkify( selector ) {
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+                width: '90%',
+                height: '90%',
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
+                center: true,
 
 				theme: 'solarized', // available themes are in /css/theme
 				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
