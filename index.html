@@ -61,7 +61,7 @@ public void testClass() {
                 <section>
                     <h2>Se você concorda...</h2>
 
-                    <img alt="Tio Sam quer você" src="BAIXAR" class="fragment roll-in">
+                    <img alt="Tio Sam quer você" src="img/tio-sam.jpg" class="fragment roll-in">
                 </section>
 
                 <section>
@@ -73,29 +73,28 @@ public void testClass() {
                     </section>
                     <section>
                         <h2>About</h2>
-                        <p class="fragment shrink">Mestre em Ciência da Computação <img src="BAIXAR" alt="Isso sim é mestre!"></p>
-                        <p class="fragment roll-in">Desenvolvedor e instrutor na Caelum <img src="BAIXAR" alt="Logotipo da Caelum"></p>
+                        <p class="fragment shrink">Mestre em Ciência da Computação <img src="img/yoda.png" alt="Isso sim é mestre!" class="custom-inline-img"></p>
+                        <p class="fragment roll-in">Desenvolvedor e instrutor na Caelum <img src="img/caelum.jpg" alt="Logotipo da Caelum" class="custom-inline-img"></p>
                     </section>
                     <section>
                         <h2>About Caelum</h2>
-                        <img class="fragment roll-in" alt="Cursos" src="BAIXAR">
-                        <img class="fragment roll-in" alt="Online também" src="BAIXAR">
-                        <img class="fragment roll-in" alt="Livros" src="BAIXAR">
-                        <img class="fragment roll-in" alt="Open source" src="BAIXAR">
+                        <img class="fragment roll-in custom-caelum-img" alt="Cursos" src="img/apostilas.jpg">
+                        <img class="fragment roll-in custom-caelum-img" alt="Online também" src="img/online.png">
+                        <img class="fragment roll-in custom-caelum-img" alt="Livros" src="img/casa-do-codigo.png">
+                        <img class="fragment roll-in custom-caelum-img" alt="Open source" src="img/vraptor.png">
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>Pra quê testes?</h2>
-                        <img src="BAIXAR" alt="Nah, nem precisa!">
+                        <h1>Pra quê testes?</h1>
                     </section>
 
                     <section>
                         <h2>Por vários motivos!</h2>
-                        <img src="BAIXAR (foto do Aniche)" alt="TDD">
-                        <img src="BAIXAR" alt="Tudo verde!" class="fragment roll-in">
-                        <img src="BAIXAR" alt="Refatoração" class="fragment roll-in">
+                        <img src="img/aniche.jpg" alt="TDD" class="custom-motivos-img">
+                        <img src="img/build-verde.jpg" alt="Tudo verde!" class="fragment roll-in custom-motivos-img">
+                        <img src="img/red-green-refactor.jpg" alt="Refatoração" class="fragment roll-in custom-motivos-img">
                     </section>
                 </section>
 
@@ -105,7 +104,7 @@ public void testClass() {
 
                 <section>
                     <h2>Ah, é...</h2>
-                    <img src="BAIXAR" alt="Documentação">
+                    <img src="img/docs.jpg" alt="Documentação">
                 </section>
 
                 <section>
@@ -122,7 +121,7 @@ public void testClass() {
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
-                    <img class="fragment roll-in" src="BAIXAR" alt="Demorou para entender?">
+                    <img class="fragment roll-in custom-ampulheta" src="img/ampulheta.jpg" alt="Demorou para entender?">
                     <aside class="notes">
                         <p>Esse código ajuda a saber se o projeto funciona? Ajuda a refatorar? E a documentar?</p>
                         <p>Ajuda em tudo isso, mas será que pode melhorar?</p>
@@ -143,7 +142,7 @@ public void testClass() {
                 <section>
                     <section>
                         <h2>Mas o que é conciso?</h2>
-                        <img src="BAIXAR" alt="Bebê fofo com cara de dúvida">
+                        <img src="img/meme-duvida.png" alt="Oh, dúvida cruel">
                     </section>
 
                     <section>
@@ -164,11 +163,11 @@ assertEquals(false, Modifier.isFinal(cls.getModifiers()));
 assertThat(cls, both(isPublic(), not(isFinal())));
 </code></pre>
                         <strong class="fragment roll-in custom-frase-efeito custom-curto-conciso">
-                            <img src="BAIXAR" alt="Joinha!" class="custom-joinha">
                             <span class="custom-frase-efeito-parte">+ curto</span>
                             <span class="custom-frase-efeito-parte">=</span>
                             <span class="custom-frase-efeito-parte">+ conciso</span>
                         </strong>
+                        <img src="img/chuck-joinha.jpg" class="fragment roll-in custom-joinha" alt="Joinha!">
                     </section>
 
                     <section>
@@ -718,14 +717,14 @@ public void canProvideCustomRequestScopedComponents() {
         Arrays.&lt;Class&lt;?&gt;&gt;asList(MyRequestComponent.class));
 }
 </code></pre>
-                    <img src="BAIXAR" alt="Too dry!" class="fragment roll-in">
+                    <img src="img/cacto.png" alt="Too dry!" class="fragment roll-in custom-cacto">
                 </section>
 
                 <section>
                     <section>
                         <h2>Dá para melhorar?</h2>
 
-                        <img src="BAIXAR (na vdd, gerar)" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
+                        <img src="GERAR" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
                     </section>
                     <section>
                         <h2>Teste == documentação</h2>
@@ -733,7 +732,7 @@ public void canProvideCustomRequestScopedComponents() {
                             <li>De como deve funcionar</li>
                             <li class="fragment roll-in"><strong>Do que está errado</strong></li>
                         </ul>
-                        <p class="fragment roll-in">Fundamental para TDD! <img src="BAIXAR" alt="Aniche, o Encantado"></p>
+                        <p class="fragment roll-in">Fundamental para TDD! <img src="img/aniche.jpg" alt="Aniche, o Encantado" class="custom-inline-img"></p>
                     </section>
                     <section>
 <pre><code data-trim contenteditable class="java">
@@ -764,7 +763,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
 </code></pre>
                     </section>
                     <section>
-                        <img src="BAIXAR (na vdd, gerar)" alt="Mensagens de erro legíveis">
+                        <img src="GERAR" alt="Mensagens de erro legíveis">
                     </section>
                     <section>
 <pre><code data-trim contenteditable class="java">
@@ -807,7 +806,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
 </code></pre>
                     </section>
                     <section>
-                        <img src="BAIXAR" alt="Mensagens de erro descritivas">
+                        <img src="GERAR" alt="Mensagens de erro descritivas">
                         <strong class="fragment roll-in custom-frase-efeito custom-frase-calma">Calma!</strong>
                         <aside class="notes">
                             Hamcrest é uma ferramenta nascida no mundo
@@ -833,7 +832,7 @@ public void cool_asserts() {
                         <small>Métodos da classe org.hamcrest.Matchers</small>
                     </section>
                     <section>
-                        <img src="BAIXAR" alt="Teste falhando e mensagem de erro">
+                        <img src="GERAR" alt="Teste falhando e mensagem de erro">
                     </section>
                     <section>
                         <h2>O céu é o limite</h2>
@@ -869,7 +868,7 @@ public class PrazoDeTarefaMatcher extends TypeSafeMatcher&lt;Tarefa&gt; {
                         </aside>
                     </section>
                     <section>
-                        <img src="BAIXAR" alt="Teste com o matcher de Tarefa falhando">
+                        <img src="GERAR" alt="Teste com o matcher de Tarefa falhando">
                     </section>
                     <section>
                         <h2>Mais Hamcrest</h2>
