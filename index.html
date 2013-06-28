@@ -568,10 +568,10 @@ public void mostraTarefasDoUsuario() {
 <pre><code data-trim contenteditable class="java">
 public void mostraTarefasDoUsuario() {
     Calendar ontem = Calendar.getInstance();
-    ontem.roll(Calendar.DAY, -1);
+    ontem.roll(Calendar.DAY_OF_MONTH, -1);
     Calendar hoje = Calendar.getInstance();
     Calendar amanha = Calendar.getInstance();
-    amanha.roll(Calendar.DAY, 1);
+    amanha.roll(Calendar.DAY_OF_MONTH, 1);
     Tarefa atrasada = new Tarefa(usuario, ontem, new Categoria(), "Acabar palestra");
     Tarefa hoje = new Tarefa(usuario, hoje, new Categoria(), "Apresentar palestra");
     Tarefa amanha = new Tarefa(usuario, amanha, new Categoria(), "Descansar");
@@ -632,10 +632,10 @@ public void testeSemMocks() {
 <pre><code data-trim contenteditable class="java">
 public void mostraTarefasDoUsuario() {
     Calendar ontem = Calendar.getInstance();
-    ontem.roll(Calendar.DAY, -1);
+    ontem.roll(Calendar.DAY_OF_MONTH, -1);
     Calendar hoje = Calendar.getInstance();
     Calendar amanha = Calendar.getInstance();
-    amanha.roll(Calendar.DAY, 1);
+    amanha.roll(Calendar.DAY_OF_MONTH, 1);
     Tarefa atrasada = new Tarefa(usuario, ontem, new Categoria(), "Acabar palestra");
     Tarefa hoje = new Tarefa(usuario, hoje, new Categoria(), "Apresentar palestra");
     Tarefa amanha = new Tarefa(usuario, amanha, new Categoria(), "Descansar");
@@ -724,7 +724,7 @@ public void canProvideCustomRequestScopedComponents() {
                     <section>
                         <h2>Dá para melhorar?</h2>
 
-                        <img src="GERAR" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
+                        <img src="img/teste-msg-ruim.png" alt="Teste com nome bizarro falhando e mostrando mensagem em branco">
                     </section>
                     <section>
                         <h2>Teste == documentação</h2>
@@ -763,7 +763,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
 </code></pre>
                     </section>
                     <section>
-                        <img src="GERAR" alt="Mensagens de erro legíveis">
+                        <img src="img/teste-msg-boa.png" alt="Mensagens de erro legíveis">
                     </section>
                     <section>
 <pre><code data-trim contenteditable class="java">
@@ -797,16 +797,33 @@ public void class_is_public_not_final_with_one_protected_constructor() {
     Class cls = DateTimeUtils.class;
 
     assertThat(cls, MyMatchers.isPublic());
-    assertThat(cls, MyMatchers.isFinal()));
+    assertThat(cls, Matchers.not(MyMatchers.isFinal()));
     assertThat(cls.getDeclaredConstructors(),
-            Matchers.hasItems(MyMatchers.protectedConstructor()));
+            Matchers.arrayContaining(MyMatchers.protectedConstructor()));
 
     DateTimeUtils utils = new DateTimeUtils() {};
 }
 </code></pre>
                     </section>
                     <section>
-                        <img src="GERAR" alt="Mensagens de erro descritivas">
+                        <h2>Matchers</h2>
+<pre><code data-trim contenteditable class="java">
+public class MyMatchers {
+    public static Matcher&lt;Class&gt; isPublic() {
+        return new TypeSafeMatcher&lt;Class&gt;() {
+            public boolean matchesSafely(Class cls) {
+                return Modifier.isPublic(cls.getModifiers());
+            }
+            public void describeTo(Description desc) {
+                desc.appendText("public class");
+            }
+        };
+    }
+}
+</code></pre>
+                    </section>
+                    <section>
+                        <img src="img/teste-msg-boa-hamcrest.png" alt="Mensagens de erro descritivas">
                         <strong class="fragment roll-in custom-frase-efeito custom-frase-calma">Calma!</strong>
                         <aside class="notes">
                             Hamcrest é uma ferramenta nascida no mundo
@@ -822,7 +839,7 @@ public void class_is_public_not_final_with_one_protected_constructor() {
                         <h2>Calma :)</h2>
 <pre><code data-trim contenteditable class="java">
 public void cool_asserts() {
-    assertThat(true, isTrue());
+    assertThat(true, is(true));
     assertThat(123, equalTo(123));
     assertThat("important", containsString("ant"));
     assertThat(Arrays.asList(1, 2, 3), hasItems(2, 3));
@@ -832,7 +849,7 @@ public void cool_asserts() {
                         <small>Métodos da classe org.hamcrest.Matchers</small>
                     </section>
                     <section>
-                        <img src="GERAR" alt="Teste falhando e mensagem de erro">
+                        <img src="img/demo-matchers.png" alt="Teste falhando e mensagem de erro">
                     </section>
                     <section>
                         <h2>O céu é o limite</h2>
@@ -868,7 +885,7 @@ public class PrazoDeTarefaMatcher extends TypeSafeMatcher&lt;Tarefa&gt; {
                         </aside>
                     </section>
                     <section>
-                        <img src="GERAR" alt="Teste com o matcher de Tarefa falhando">
+                        <img src="img/matcher-custom.png" alt="Teste com o matcher de Tarefa falhando">
                     </section>
                     <section>
                         <h2>Mais Hamcrest</h2>
